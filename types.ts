@@ -1,5 +1,4 @@
-export type User = 'Nikke | Jukka | Teemu'
-
+export type User = 'Nikke' | 'Jukka' | 'Teemu'
 export interface DebtEntry {
   id: number
   date_origin: string
@@ -7,5 +6,5 @@ export interface DebtEntry {
   debtor: User
   receiver: User
   debt_item: string
-  comment: string
+  comment?: string
 }
