@@ -1,6 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose'
 import { User } from '../types'
-
 export interface IDebt extends Document {
   date_origin: string
   date_paid: string
