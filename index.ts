@@ -1,10 +1,26 @@
 import express from 'express'
 import debtRouter from './routes/debts'
+import * as dotenv from 'dotenv'
+import mongoose from 'mongoose'
+
+dotenv.config()
 
 const app = express()
 app.use(express.json())
 
-const PORT = 3000
+const PORT = process.env.PORT ?? ''
+const url = process.env.MONGODB_URI ?? ''
+
+console.log('connecting to MongoDB Atlas')
+
+mongoose
+  .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then((_result) => {
+    console.log('connected to MongoDB')
+  })
+  .catch((error: string) => {
+    console.log('error connecting to MongoDB: ' + error)
+  })
 
 app.get('/', (_req, res) => {
   res.send('hello')
