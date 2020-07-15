@@ -1,5 +1,6 @@
 import debtData from '../mockDebtData.json'
 import { DebtEntry } from '../types'
+import Debt from '../models/debt'
 
 const debts: Array<DebtEntry> = debtData as Array<DebtEntry>
 
@@ -9,6 +10,8 @@ const getDebt = (): Array<DebtEntry> => {
 
 const createDebt = (newDebt: DebtEntry): null => {
   console.log(newDebt)
+  const debtObject = new Debt({})
+  console.log(debtObject)
   return null
 }
 
