@@ -1,15 +1,12 @@
-import debtData from '../mockDebtData.json'
 import { DebtEntry, IDbDebt } from '../types'
 import Debt from '../models/debt'
 
-const debts: Array<DebtEntry> = debtData as Array<DebtEntry>
-
-const getDebt = (): Array<DebtEntry> => {
+const getAllDebts = async (): Promise<Array<IDbDebt>> => {
+  const debts = await Debt.find({})
   return debts
 }
 
 const createDebt = async (newDebt: DebtEntry): Promise<IDbDebt> => {
-  console.log(newDebt)
   const debtObject = new Debt({
     ...newDebt,
   })
@@ -17,14 +14,15 @@ const createDebt = async (newDebt: DebtEntry): Promise<IDbDebt> => {
   return saved
 }
 
-const updateDebt = (id: number): DebtEntry | undefined | null => {
+const updateDebt = (id: string): IDbDebt | undefined | null => {
   //const debt = debts.find(d => d.id === id)
+  // change string to MongoDB id
   console.log(id)
   return null
 }
 
 export default {
-  getDebt,
+  getAllDebts,
   createDebt,
   updateDebt,
 }

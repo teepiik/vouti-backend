@@ -3,12 +3,12 @@ import debtService from '../services/debtService'
 
 /* eslint @typescript-eslint/no-unsafe-assignment: 0 */
 /* eslint @typescript-eslint/restrict-plus-operands: 0 */
-/* eslint @typescript-eslint/no-unsafe-call: 0 */
 
 const router = express.Router()
 
-router.get('/', (_req, res) => {
-  res.send('Listing of debts')
+router.get('/', async (_req, res) => {
+  const debts = await debtService.getAllDebts()
+  res.send(debts)
 })
 
 router.post('/', async (req, res) => {
