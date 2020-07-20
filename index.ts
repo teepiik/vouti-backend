@@ -9,6 +9,7 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 app.use(cors()) // eslint-disable-line
+app.use(express.static('build'))
 
 const PORT = process.env.PORT ?? ''
 const url = process.env.MONGODB_URI ?? ''
